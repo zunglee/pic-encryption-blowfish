@@ -17,8 +17,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
   
 /**
- * @author Dark
- *
+ * @author zunglee
  */
 public class EncryptFile {  
   
@@ -59,9 +58,17 @@ public class EncryptFile {
         String fileToEncrypt = "";  
         String encryptedFile = "";  
         String decryptedFile = "";  
-        String directoryPath = "Z:/us/amazonInterview/";  
+        String directoryPath = "/home/ankitesh/Wallpapers/";  
         String encryptedFilePath = "";
         String decryptedFilePath = "";
+       
+    //  store all names of picture or file in a folder  
+        File dir = new File(directoryPath);
+        File[] files = dir.listFiles();
+        System.out.println("heresdsd");
+        
+        EncryptFile encryptFile = new EncryptFile();
+        
         
         // encrypted folder
         if(createFolderIfNot(directoryPath,"encryptedFolder")){
@@ -78,14 +85,10 @@ public class EncryptFile {
         }
 		else System.out.println("Folder not able to create");
        
-       //  store all names of picture or file in a folder  
-        File dir = new File(directoryPath);
-        File[] files = dir.listFiles();
-        EncryptFile encryptFile = new EncryptFile();
-        
+       
        // loop to read each  picture or file and to encrypt it 
      for(int i=0 ; i< files.length ;i++){
-            encryptedFile = files[i].getName();  
+        encryptedFile = files[i].getName();  
         System.out.println("Starting Encryption...");  
         encryptFile.encrypt(directoryPath + encryptedFile,    encryptedFilePath + encryptedFile);  
         System.out.println("Encryption completed...");
